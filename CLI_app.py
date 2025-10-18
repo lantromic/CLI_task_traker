@@ -54,7 +54,7 @@ if args.command == 'add':
 
     with open('task_list.json','w') as f:
         json.dump(task,f)
-    output()
+    output('')
     print(f"\ntask added with id: {id}")
 
 if args.command == 'update':
@@ -72,7 +72,7 @@ if args.command == 'update':
 
     except:
         print('make file in correct format first')
-    output()
+    output('')
     
 if args.command == 'delete':
     id = int(args.params[0])
@@ -88,7 +88,7 @@ if args.command == 'delete':
 
     except:
         print('make file in correct format first')
-    output()
+    output('')
 
 if args.command == 'mark-in-progress':
     id = int(args.params[0])
@@ -104,12 +104,11 @@ if args.command == 'mark-in-progress':
 
     except:
         print('make file in correct format first')
-    output()
+    output('')
 
 if args.command == 'mark-done':
     id = int(args.params[0])
     data = load_tasks()
-    print(data)
 
     try:
         for dict in data:
@@ -121,7 +120,10 @@ if args.command == 'mark-done':
 
     except:
         print('make file in correct format first')
-    output()
+    output('')
 
 if args.command == 'list':
-    output(args.params[0])
+    try:
+        output(args.params[0])
+    except:
+        output(args.params)
